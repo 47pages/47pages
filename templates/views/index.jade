@@ -1,23 +1,29 @@
 extends ../layouts/default
 
 block content
-	.container: .jumbotron
-		img(src='/images/logo.svg', width='160')
-		h1 Welcome
-		p This is your new <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a> website.
-		p It includes the latest versions of
-			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			| and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		p Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.
-		hr
-		if user && user.canAccessKeystone
-			p
-				a(href='/keystone/signin').btn.btn-lg.btn-primary Open the Admin UI
-		else
-			p We have created a default Admin user for you with the email <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.
-			p
-				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
-				|  to use the Admin UI.
-		hr
-		p Remember to <a href='https://github.com/JedWatson/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
+	div.container
+		div.welcome__card
+			h2 Welcome
+			p.welcome__card--description.bold
+				| We are the literary magazine of the Claremont Colleges.
+			p.welcome__card--description
+				| We publish everything from photography to micro-fiction; poetry to intricate doodles;
+				| personal narratives to wood carvings; cartoons to longer fiction pieces.
+			p.welcome__card--description
+				| Our mission is simple: we want to showcase the creativity that exists across all five campuses.
+				| We’re looking to compile selections of your best art and writing in a bi-monthly magazine, to be
+				| published and distributed across the campuses and made available online.
+		div.welcome__card
+			h2 Contribute
+			p.welcome__card--contribute
+				| If you are interested in contributing to the magazine, please consider
+				|  #[a(href='contribute') submitting your original work] or
+				|  #[a(href='staff') joining our staff]. Our editorial meetings are open to any interested students
+				| and are a great way to start getting involved. If you want to see the type of pieces we’re interested
+				| in or what the staff responsibilities look like in action, you can keep up with editorial meeting dates by
+				|  #[a(href='https://www.facebook.com/47Pages') following us on Facebook].
+			p.welcome__card--contribute
+				| If you have any questions or want to know more about any aspect of the magazine, feel free to
+				| email our Editor-in-Chief at
+				|  #[a(href='mailto:editor@47pages.org') editor@47pages.org]. We can’t wait to share your talent
+				| with the 5C community!

@@ -19,8 +19,43 @@
 @import "site/variables.less";
 
 
+// Fonts
+// ===========
+
+@font-face {
+  font-family: centaur;
+  src: url('../../fonts/centaur.ttf');
+}
+
+@font-face {
+  font-family: code_light;
+  src: url('../../fonts/code_light.otf');
+}
+
 // Site Styles
 // ===========
 
+body {
+	font-family: 'Helvetica Neue', Helvetica;
+	font-size: 14px;
+}
+
+.pull-right {
+	float: right;
+}
+
+.line_breaks {
+	white-space: pre;
+}
+
+.bold {
+	font-weight: bold;
+}
+
 // Add your own site style includes here
 @import "site/layout.less";
+@import "site/header.less";
+@import "site/footer.less";
+
+
+@import "site/index.less";

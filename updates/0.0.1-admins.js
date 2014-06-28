@@ -25,9 +25,9 @@ var admins = [
 ];
 
 function createAdmin(admin, done) {
-	
+
 	var newAdmin = new User.model(admin);
-	
+
 	newAdmin.isAdmin = true;
 	newAdmin.save(function(err) {
 		if (err) {
@@ -38,7 +38,7 @@ function createAdmin(admin, done) {
 		}
 		done(err);
 	});
-	
+
 }
 
 exports = module.exports = function(done) {
