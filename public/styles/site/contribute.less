@@ -1,0 +1,72 @@
+.submission-form {
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+	padding: 30px;
+
+	background-color: rgba(255, 255, 255, 0.9);
+
+	h2 {
+		font-size: 42px;
+
+		margin: 0;
+		margin-bottom: 10px;
+	}
+
+	table {
+		margin-top: 4%;
+
+		border-collapse: separate;
+		border-spacing: 10px;
+		border: 1px solid grey;
+	}
+}
+
+.submission-form__form {
+	td {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+}
+
+// Default option visibility
+.submission-form__form--editing-options, .submission-form__form--art-specific {
+	display: none;
+}
+
+.submission-guidelines, .fade_background {
+	display: none;
+}
+
+// Guidlines modal
+.submission-guidelines {
+	width: 80%;
+	height: 80%;
+	top: 0;
+	left: 10%;
+	position: fixed;
+	margin-top: 5%;
+	padding: 30px;
+	z-index: 10;
+
+	background-color: white;
+	overflow-y: scroll;
+
+	display: none;
+
+	h2 {
+		margin: 0;
+	}
+}
+
+.fade_background {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	position: fixed;
+	background-color: black;
+	opacity: .6;
+}
