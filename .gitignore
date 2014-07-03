@@ -16,3 +16,6 @@ node_modules
 .DS_Store
 
 .env
+
+# Compiled LESS
+*.min.css
