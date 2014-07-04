@@ -2,18 +2,22 @@ extends ../layouts/default
 
 block content
 	div.container
-		div.welcome-card
-			h2 Welcome
-			p.bold
-				| 47 Pages is the literary magazine of the Claremont Colleges.
-			p
+		div.card
+			div.welcome-header
+				div.welcome-header__image
+					img(src='images/logo_square.png')
+				div.welcome-header__text
+					h2 Welcome
+					p.bold
+						| 47 Pages is the literary magazine of the Claremont Colleges.
+			p.welcome-description
 				| We publish everything from photography to micro-fiction; poetry to intricate doodles;
 				| personal narratives to wood carvings; cartoons to longer fiction pieces.
 			p
 				| Our mission is simple: we want to showcase the creativity that exists across all five campuses.
 				| We’re looking to compile selections of your best art and writing in a bi-monthly magazine, to be
 				| published and distributed across the campuses and made available online.
-		div.welcome-card
+		div.card
 			h2 Contribute
 			p
 				| If you are interested in contributing to the magazine, please consider
