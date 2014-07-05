@@ -10,26 +10,26 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	
+
 	'name': '47 Pages',
 	'brand': '47 Pages',
-	
+
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-	
+
 	'views': 'templates/views',
 	'view engine': 'jade',
-	
+
 	'emails': 'templates/emails',
-	
+
 	'auto update': true,
-	
+
 	'session': true,
 	'auth': true,
 	'user model': 'User',
 	'cookie secret': 'T9WF>>gz:wTcV)%rgmPt).804W]?J*bb9Ps;7^}8,eo/T*r6l^moZd"nq4~3nt!~'
-	
+
 });
 
 // Load your project's Models
@@ -90,9 +90,7 @@ keystone.set('email tests', require('./routes/emails'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-	'posts': ['posts', 'post-categories'],
-	'galleries': 'galleries',
-	'enquiries': 'enquiries',
+	'submissions': ['literature-submissions', 'art-submissions'],
 	'users': 'users'
 });
 
