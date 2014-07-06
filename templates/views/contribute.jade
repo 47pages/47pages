@@ -20,7 +20,7 @@ block content
 					tr
 						td
 							h4 Your Name
-							h5
+							h6
 								| Your name will never be revealed to the editing staff until your piece is published -
 								| all requests are cataloged anonymously by a computer.
 
@@ -35,7 +35,7 @@ block content
 					tr
 						td
 							h4 Submission
-							h5
+							h6
 								| Do not include your name in the uploaded document itself! Files must be in a valid
 								| document or image format.
 
@@ -44,33 +44,33 @@ block content
 					tr.submission-form__form--art-specific
 						td
 							h4 Technical Details
-							h5 Provide the medium, year of creation, and the title.
+							h6 Provide the medium, year of creation, and the title.
 						td
 							textarea(name='technical_details', cols='40', rows='5')
 					tr
 						td
 							h4 Willing To Edit?
-							h5 Are you open to discussing changes to your piece before it is published?
+							h6 Are you open to discussing changes to your piece before it is published?
 						td
 							| Yes #[input(type='radio', name='can_edit', value='true')]
 							| &nbsp;&nbsp; No #[input(type='radio', name='can_edit', value='false', checked)]
 					tr.submission-form__form--editing-options
 						td
 							h4 Willing To Meet in Person?
-							h5 To discuss edits, if necessary, would you be willing to meet in person with the editors?
+							h6 To discuss edits, if necessary, would you be willing to meet in person with the editors?
 						td
 							| Yes #[input(type='radio', name='can_meet', value='true')]
 							| &nbsp;&nbsp; No #[input(type='radio', name='can_meet', value='false', checked)]
 					tr
 						td
 							h4 Contact Email
-							h5 You will only be contacted if edits are suggested.
+							h6 You will only be contacted if edits are suggested.
 						td
 							input(type='text', name='email')
 					tr.submission-form__form--literature-specific
 						td
 							h4 Artwork Pairing
-							h5
+							h6
 								| If you want to request a piece of artwork to be paired with your piece, or have
 								| knowledge of something that has been submitted that you would like to accompany your
 								| piece, provide those details here.
@@ -79,7 +79,7 @@ block content
 					tr
 						td
 							h4 Additional Notes (Optional)
-							h5
+							h6
 								| What inspired you to write this piece? What were you trying to convey? Are these notes
 								| something you would want published alongside your piece?
 						td
