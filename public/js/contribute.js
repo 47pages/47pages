@@ -64,7 +64,7 @@ FSP.hide_submission_guidelines = function () {
 };
 
 $('document').ready(function () {
-	$('input[name="submission_type"]').change(function (event) {
+	$('input[name="submissionType"]').change(function (event) {
 		if (event.currentTarget.value === 'literature') {
 			FSP.format_form.toggle_literature();
 		}
@@ -73,7 +73,7 @@ $('document').ready(function () {
 		}
 	});
 
-	$('input[name="can_edit"]').change(function (event) {
+	$('input[name="willingToEdit"]').change(function (event) {
 		if (event.currentTarget.value === 'true') {
 			FSP.format_form.show_editing_options();
 		}

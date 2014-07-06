@@ -4,23 +4,21 @@ html
 	head
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
-		title= title || '47 Pages'
+		title 47 Pages
 		link(rel="shortcut icon", href="/images/favicon.ico", type="image/x-icon")
 
-		//- Customise the stylesheet for your site by editing /public/styles/site.less
-		//- All .less files will be automatically compiled and minified in production.
+		//- site.less is compiled by Grunt to be served as minified CSS
 		link(href="/styles/site.min.css", rel="stylesheet")
 
-		//- This file provides the default styling for the KeystoneJS Content Editor
+		//- In-page styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
 			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
 
 		//- Include template-specific stylesheets by extending the css block
 		block css
 
-		//- Add any other template-specific HEAD tags by extending the head block
+		//- Add any other template-specific head tags by extending the head block
 		block head
 
 	body
@@ -32,11 +30,10 @@ html
 			//- The Intro block appears above flash messages (used for temporary information display)
 			block intro
 
-			//- Flash messages allow you to display once-off status messages to users, e.g. form
-			//- validation errors, success messages, etc.
+			//- Flash messages
 			+flash-messages(messages)
 
-			//- The content block should contain the body of your template's content
+			//- Contains the body of the template's content
 			block content
 
 		//- FOOTER
