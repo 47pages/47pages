@@ -33,7 +33,7 @@ FSP.format_form = {
 // Handle the modal display
 FSP.show_submission_guidelines = function () {
 	$('.submission-guidelines').show();
-	$('.fade_background').show();
+	$('.fade-background').show();
 
 	// Disable scrolling in the background
 	$('body').addClass('no-scroll');
@@ -54,7 +54,7 @@ FSP.show_submission_guidelines = function () {
 
 FSP.hide_submission_guidelines = function () {
 	$('.submission-guidelines').hide();
-	$('.fade_background').hide();
+	$('.fade-background').hide();
 
 	// Re-enable scrolling on the body
 	$('body').removeClass('no-scroll');
