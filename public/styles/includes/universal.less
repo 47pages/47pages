@@ -55,13 +55,39 @@ ul {
 }
 
 // Special selectors
-.container {
+#body {
 	width: 100%;
 	padding-bottom: 5%;
 	overflow: auto;
 
 	background-image: url(../images/background_vol1.png);
 	background-size: cover;
+}
+
+#flash-messages {
+	width: 80%;
+	margin-top: 1%;
+	margin-left: auto;
+	margin-right: auto;
+
+	border: 2px solid black;
+
+	h4 {
+		color: black;
+	}
+
+	.flash-message {
+		padding: 10px;
+		opacity: .9;
+	}
+
+	.flash-message--error {
+		background-color: #EB4C4C;
+	}
+
+	.flash-message--success {
+		background-color: rgb(59, 168, 59);
+	}
 }
 
 .float-right {
