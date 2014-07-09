@@ -19,3 +19,11 @@ node_modules
 
 # Compiled LESS
 *.min.css
+
+# Submission uploads
+submissions
+
+# Preserve directory layout
+!submissions/art/original/.blank
+!submissions/art/edited/.blank
+!submissions/literature/edited/.blank

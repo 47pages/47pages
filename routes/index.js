@@ -18,8 +18,7 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var _ = require('underscore'),
-	keystone = require('keystone'),
+var keystone = require('keystone'),
 	middleware = require('./middleware'),
 	importRoutes = keystone.importer(__dirname);
 
@@ -29,16 +28,19 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views')
+	views: importRoutes('./views'),
+	actions: importRoutes('./actions')
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
-
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/contribute', routes.views.contribute);
 	app.get('/staff', routes.views.staff);
+
+	// Actions
+	app.post('/submit', routes.actions.submit);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

@@ -15,7 +15,7 @@ block content
 			p
 				| Prior to contributing one or more pieces for publication, please be sure that each complies with our
 				|  #[span(id='show_submission_guidelines', class='link') submission guidelines].
-			form(action='contribute', method='POST', enctype='enctype="multipart/form-data"').submission-form__form
+			form(action='submit', method='POST', enctype='multipart/form-data').submission-form__form
 				table
 					tr
 						td
@@ -28,10 +28,16 @@ block content
 							input(type='text', name='author')
 					tr
 						td
+							h4 Contact Email
+							h6 You will only be contacted if edits are suggested.
+						td
+							input(type='text', name='contactEmail')
+					tr
+						td
 							h4 Submission Type
 						td
-							| Literture #[input(type='radio', name='submission_type', value='literature', checked)]
-							| &nbsp;&nbsp; Art #[input(type='radio', name='submission_type', value='art')]
+							| Literture #[input(type='radio', name='submissionType', value='literature', checked)]
+							| &nbsp;&nbsp; Art #[input(type='radio', name='submissionType', value='art')]
 					tr
 						td
 							h4 Submission
@@ -41,6 +47,11 @@ block content
 
 						td
 							input(type='file', name='submission')
+					tr
+						td
+							h4 Title
+						td
+							input(type='text', name='title')
 					tr.submission-form__form--art-specific
 						td
 							h4 Technical Details
@@ -52,21 +63,15 @@ block content
 							h4 Willing To Edit?
 							h6 Are you open to discussing changes to your piece before it is published?
 						td
-							| Yes #[input(type='radio', name='can_edit', value='true')]
-							| &nbsp;&nbsp; No #[input(type='radio', name='can_edit', value='false', checked)]
+							| Yes #[input(type='radio', name='willingToEdit', value='true')]
+							| &nbsp;&nbsp; No #[input(type='radio', name='willingToEdit', value='false', checked)]
 					tr.submission-form__form--editing-options
 						td
 							h4 Willing To Meet in Person?
 							h6 To discuss edits, if necessary, would you be willing to meet in person with the editors?
 						td
-							| Yes #[input(type='radio', name='can_meet', value='true')]
-							| &nbsp;&nbsp; No #[input(type='radio', name='can_meet', value='false', checked)]
-					tr
-						td
-							h4 Contact Email
-							h6 You will only be contacted if edits are suggested.
-						td
-							input(type='text', name='email')
+							| Yes #[input(type='radio', name='willingToMeetInPerson', value='true')]
+							| &nbsp;&nbsp; No #[input(type='radio', name='willingToMeetInPerson', value='false', checked)]
 					tr.submission-form__form--literature-specific
 						td
 							h4 Artwork Pairing
@@ -75,7 +80,7 @@ block content
 								| knowledge of something that has been submitted that you would like to accompany your
 								| piece, provide those details here.
 						td
-							textarea(name='artwork_pairing', cols='40', rows='5')
+							textarea(name='artworkPairing', cols='40', rows='5')
 					tr
 						td
 							h4 Additional Notes (Optional)
@@ -83,7 +88,7 @@ block content
 								| What inspired you to write this piece? What were you trying to convey? Are these notes
 								| something you would want published alongside your piece?
 						td
-							textarea(name='notes', cols='40', rows='5')
+							textarea(name='additionalNotes', cols='40', rows='5')
 					tr
 						td
 						td
@@ -115,7 +120,7 @@ block content
 						| like Google Drive or Dropbox and submitting the link instead. See a list of supported file types
 						|  #[a(href='http://helpx.adobe.com/illustrator/kb/supported-file-formats-illustrator.html') here].
 					li
-						| <b>Comics:</b>: Both digital and traditional comics and strips accepted. However, legibility is
+						| <b>Comics:</b> Both digital and traditional comics and strips accepted. However, legibility is
 						| critical: if handwritten text is difficult to decipher, we will contact you requesting a
 						| re-submission.
 			p
@@ -145,4 +150,4 @@ block content
 				| <i>47 Pages</i> is not responsible for any issues of plagiarism or copyright infringement that may occur
 				| due to contributor misattribution, deliberate or otherwise.
 
-		div.fade-background
+	div.fade-background
