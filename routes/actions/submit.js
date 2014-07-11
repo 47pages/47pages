@@ -12,20 +12,51 @@ exports = module.exports = function (req, res) {
 		var new_submission,
 			model_fields;
 
+		// Manually set some properties to satisfy the updateHandler
+		req.body.originalTitle = req.body.title;
+		req.body['author.full'] = req.body.author;
+
 		switch (req.body.submissionType) {
 			case 'literature':
 				new_submission = new LiteratureSubmission.model();
+
 				// TODO: Cleaner way to to this? Have to trick Keystone into accepting a file with the right path
 				req.files.originalPiece_upload = req.files.submission;
-				model_fields = 'title, author, willingToEdit, willingToMeetInPerson, contactEmail, additionalNotes, originalPiece, artworkPairing';
+
+				model_fields = [
+					'author',
+					'contactEmail',
+					'title',
+					'willingToEdit',
+					'willingToMeetInPerson',
+					'artworkPairing',
+					'additionalNotes',
+					'originalTitle',
+					'originalPiece'
+				].join(', ');
 				break;
 			case 'art':
 				new_submission = new ArtSubmission.model();
+
 				req.files.originalImage_upload = req.files.submission;
-				model_fields = 'title, author, willingToEdit, willingToMeetInPerson, contactEmail, additionalNotes, originalImage, technicalDetails';
+
+				model_fields = [
+					'author',
+					'contactEmail',
+					'title',
+					'technicalDetails',
+					'willingToEdit',
+					'willingToMeetInPerson',
+					'additionalNotes',
+					'originalTitle',
+					'originalImage'
+				].join(', ');
+
 				break;
 			default:
-				return false;
+				req.flash('error', {title: 'SubmissionType error.'});
+				view.render('contribute');
+				return;
 		}
 
 		var updater = new_submission.getUpdateHandler(req);

@@ -16,7 +16,9 @@ var ArtSubmission = new keystone.List('ArtSubmission', {
 		path: 'slug',
 		from: 'title',
 		unique: true
-	}
+	},
+	nocreate: true,
+	nodelete: true
 });
 
 var image_mime_types = [
@@ -27,13 +29,18 @@ var image_mime_types = [
 	'image/svg+xml'
 ];
 
-ArtSubmission.add(_.extend({
+ArtSubmission.add({
+	title: SubmissionSchema.title,
+	status: SubmissionSchema.status,
+	staffMeetingAssignment: SubmissionSchema.staffMeetingAssignment,
+	submissionDate: SubmissionSchema.submissionDate,
+	originalTitle: SubmissionSchema.originalTitle,
 	originalImage: {
 		type: Types.LocalFile,
 		dest: './submissions/art/original',
 		allowedTypes: image_mime_types,
 		filename: function (model, filename) {
-			var filename_elements = filename.split(('.'));
+			var filename_elements = filename.split('.');
 			return filename_elements[0] + '_' + model._id + '.' + filename_elements[1];
 		},
 		noedit: true
@@ -43,14 +50,21 @@ ArtSubmission.add(_.extend({
 		dest: './submissions/art/edited',
 		allowedTypes: image_mime_types,
 		filename: function (model, filename) {
-			var filename_elements = filename.split(('.'));
+			var filename_elements = filename.split('.');
 			return filename_elements[0] + '_' + model._id + '.' + filename_elements[1];
 		}
 	},
+	willingToEdit: SubmissionSchema.willingToEdit,
+	willingToMeetInPerson: SubmissionSchema.willingToMeetInPerson,
+	author: SubmissionSchema.author,
+	contactEmail: SubmissionSchema.contactEmail,
 	technicalDetails: {
-		type: String
-	}
-}, SubmissionSchema));
+		type: String,
+		noedit: true
+	},
+	additionalNotes: SubmissionSchema.additionalNotes,
+	publishOnline: SubmissionSchema.publishOnline
+});
 
-ArtSubmission.defaultColumns = 'title, state|20%, submissionDate|20%';
+ArtSubmission.defaultColumns = 'title, status, submissionDate';
 ArtSubmission.register();

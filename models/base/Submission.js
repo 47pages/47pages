@@ -11,34 +11,60 @@ var SubmissionSchema = {
 		type: String,
 		required: true
 	},
+	originalTitle: {
+		type: String,
+		required: true,
+		noedit: true
+	},
 	author: {
 		type: Types.Name,
-		index: true
+		index: true,
+		//required: true,
+		noedit: true
 	},
 	submissionDate: {
 		type: Types.Date,
-		index: true
+		index: true,
+		required: true,
+		default: Date.now,
+		noedit: true
 	},
 	willingToEdit: {
-		type: Types.Boolean
+		type: Types.Boolean,
+		noedit: true
 	},
 	willingToMeetInPerson: {
 		type: Types.Boolean,
 		dependsOn: {
 			willingToEdit: true
-		}
+		},
+		noedit: true
 	},
 	contactEmail: {
-		type: Types.Email
+		type: Types.Email,
+		required: true,
+		noedit: true
 	},
 	additionalNotes: {
-		type: String
+		type: String,
+		noedit: true
 	},
 	status: {
 		type: Types.Select,
 		options: 'new, staff review, editorial review, copy, design, published',
 		default: 'new',
 		index: true
+	},
+	staffMeetingAssignment: {
+		type: Types.Relationship,
+		ref: 'Meeting',
+		dependsOn: {
+			status: 'staff review'
+		}
+	},
+	publishOnline: {
+		type: Types.Boolean,
+		default: false
 	}
 };
 

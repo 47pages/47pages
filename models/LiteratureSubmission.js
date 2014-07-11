@@ -1,6 +1,5 @@
 var keystone = require('keystone'),
 	Types = keystone.Field.Types,
-	_ = require('underscore'),
 	SubmissionSchema = require('./base/Submission.js');
 
 /**
@@ -16,7 +15,9 @@ var LiteratureSubmission = new keystone.List('LiteratureSubmission', {
 		path: 'slug',
 		from: 'title',
 		unique: true
-	}
+	},
+	nocreate: true,
+	nodelete: true
 });
 
 var doc_mime_types = [
@@ -26,13 +27,18 @@ var doc_mime_types = [
 	'application/x-iwork-pages-sffpages' // pages
 ];
 
-LiteratureSubmission.add(_.extend({
+LiteratureSubmission.add({
+	title: SubmissionSchema.title,
+	status: SubmissionSchema.status,
+	staffMeetingAssignment: SubmissionSchema.staffMeetingAssignment,
+	submissionDate: SubmissionSchema.submissionDate,
+	originalTitle: SubmissionSchema.originalTitle,
 	originalPiece: {
 		type: Types.LocalFile,
 		dest: './submissions/literature/original',
 		allowedTypes: doc_mime_types,
 		filename: function (model, filename) {
-			var filename_elements = filename.split(('.'));
+			var filename_elements = filename.split('.');
 			return filename_elements[0] + '_' + model._id + '.' + filename_elements[1];
 		},
 		noedit: true
@@ -42,10 +48,17 @@ LiteratureSubmission.add(_.extend({
 		wysiwyg: true,
 		height: 150
 	},
+	willingToEdit: SubmissionSchema.willingToEdit,
+	willingToMeetInPerson: SubmissionSchema.willingToMeetInPerson,
+	author: SubmissionSchema.author,
+	contactEmail: SubmissionSchema.contactEmail,
 	artworkPairing: {
-		type: String
-	}
-}, SubmissionSchema));
+		type: String,
+		noedit: true
+	},
+	additionalNotes: SubmissionSchema.additionalNotes,
+	publishOnline: SubmissionSchema.publishOnline
+});
 
-LiteratureSubmission.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+LiteratureSubmission.defaultColumns = 'title, status, submissionDate';
 LiteratureSubmission.register();
