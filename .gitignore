@@ -21,9 +21,9 @@ node_modules
 *.min.css
 
 # Submission uploads
-submissions
+private/submissions
 
 # Preserve directory layout
-!submissions/art/original/.blank
-!submissions/art/edited/.blank
-!submissions/literature/edited/.blank
+!private/submissions/art/original/.blank
+!private/submissions/art/edited/.blank
+!private/submissions/literature/edited/.blank

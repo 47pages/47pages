@@ -37,7 +37,7 @@ ArtSubmission.add({
 	originalTitle: SubmissionSchema.originalTitle,
 	originalImage: {
 		type: Types.LocalFile,
-		dest: './submissions/art/original',
+		dest: './private/submissions/art/original',
 		allowedTypes: image_mime_types,
 		filename: function (model, filename) {
 			var filename_elements = filename.split('.');
@@ -47,7 +47,7 @@ ArtSubmission.add({
 	},
 	editedImage: {
 		type: Types.LocalFile,
-		dest: './submissions/art/edited',
+		dest: './private/submissions/art/edited',
 		allowedTypes: image_mime_types,
 		filename: function (model, filename) {
 			var filename_elements = filename.split('.');
