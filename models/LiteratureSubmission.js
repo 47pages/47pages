@@ -41,6 +41,9 @@ LiteratureSubmission.add({
 			var filename_elements = filename.split('.');
 			return filename_elements[0] + '_' + model._id + '.' + filename_elements[1];
 		},
+		format: function (model, file) {
+			return '<a href="/private/submissions/literature/original/' + file.filename + '">' + file.filename + '</a>';
+		},
 		noedit: true
 	},
 	editedPiece: {

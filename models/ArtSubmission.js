@@ -43,6 +43,11 @@ ArtSubmission.add({
 			var filename_elements = filename.split('.');
 			return filename_elements[0] + '_' + model._id + '.' + filename_elements[1];
 		},
+		format: function (model, file) {
+			return	'<a href="/private/submissions/art/original/' + file.filename + '">' +
+						'<img src="/private/submissions/art/original/' + file.filename + '" style="max-width: 400px">' +
+					'</a>';
+		},
 		noedit: true
 	},
 	editedImage: {
@@ -52,6 +57,11 @@ ArtSubmission.add({
 		filename: function (model, filename) {
 			var filename_elements = filename.split('.');
 			return filename_elements[0] + '_' + model._id + '.' + filename_elements[1];
+		},
+		format: function (model, file) {
+			return	'<a href="/private/submissions/art/edited/' + file.filename + '">' +
+						'<img src="/private/submissions/art/edited/' + file.filename + '" style="max-width: 400px">' +
+					'</a>';
 		}
 	},
 	willingToEdit: SubmissionSchema.willingToEdit,
