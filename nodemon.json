@@ -1,0 +1,23 @@
+{
+	"restartable": "rs",
+	"verbose": true,
+	"execMap": {
+		"js": "node --harmony"
+	},
+	"watch": [
+		"models",
+		"private",
+		"public",
+		"routes",
+		"templates",
+		"node_modules/keystone/lib",
+		"node_modules/keystone/public",
+		"node_modules/keystone/routes",
+		"node_modules/keystone/templates",
+		"node_modules/keystone/index.js"
+	],
+	"env": {
+		"NODE_ENV": "development"
+	},
+	"ext": "js json jade less"
+}
