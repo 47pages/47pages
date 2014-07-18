@@ -30,5 +30,17 @@ Meeting.add({
 	}
 });
 
+Meeting.relationship({
+	path: 'art submissions',
+	ref: 'ArtSubmission',
+	refPath: 'staffMeetingAssignment'
+});
+
+Meeting.relationship({
+	path: 'literature submissions',
+	ref: 'LiteratureSubmission',
+	refPath: 'staffMeetingAssignment'
+});
+
 Meeting.defaultColumns = 'date';
 Meeting.register();
