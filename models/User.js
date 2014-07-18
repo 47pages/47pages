@@ -136,6 +136,17 @@ User.schema.virtual('canSeeEmail').get(function () {
 	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
 });
 
+User.schema.virtual('canEditTextarea').get(function () {
+	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
+});
+
+User.schema.virtual('canEditMeeting').get(function () {
+	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
+});
+
+User.schema.virtual('canEditModels').get(function () {
+	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
+});
 
 User.defaultColumns = 'name, email, isAdmin';
 User.register();
