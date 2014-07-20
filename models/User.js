@@ -1,5 +1,6 @@
 var keystone = require('keystone'),
-	Types = keystone.Field.Types;
+	Types = keystone.Field.Types,
+	auth = require('../node_modules/keystone/routes/api/auth')
 
 /**
  * User Model
@@ -7,15 +8,6 @@ var keystone = require('keystone'),
  */
 
 var User = new keystone.List('User');
-
-var permission_levels = {
-	admin: 10,
-	editor: 9,
-	senior: 8,
-	copy: 5,
-	design: 5,
-	staff: 1
-};
 
 User.add({
 	name: {
@@ -55,6 +47,14 @@ User.add({
 		type: Boolean,
 		label: 'Senior Art'
 	},
+	isJuniorLiterature: {
+		type: Boolean,
+		label: 'Junior Literature'
+	},
+	isJuniorArt: {
+		type: Boolean,
+		label: 'Junior Art'
+	},
 	isCopy: {
 		type: Boolean,
 		label: 'Copy'
@@ -75,28 +75,25 @@ User.add({
 // Set the permissionLevel accordingly on save
 User.schema.pre('save', function (next) {
 	if (this.isAdmin) {
-		this.permissionLevel = permission_levels.admin;
+		this.permissionLevel = auth.permissionLevels.admin;
 	}
 	else if (this.isEditor) {
-		this.permissionLevel = permission_levels.editor;
+		this.permissionLevel = auth.permissionLevels.editor;
 	}
-	else if (this.isSeniorDesign) {
-		this.permissionLevel = permission_levels.senior;
+	else if (this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt) {
+		this.permissionLevel = auth.permissionLevels.senior;
 	}
-	else if (this.isSeniorLiterature) {
-		this.permissionLevel = permission_levels.senior;
-	}
-	else if (this.isSeniorArt) {
-		this.permissionLevel = permission_levels.senior;
+	else if (this.isJuniorLiterature || this.isJuniorArt) {
+		this.permissionLevel = auth.permissionLevels.junior;
 	}
 	else if (this.isCopy) {
-		this.permissionLevel = permission_levels.copy;
+		this.permissionLevel = auth.permissionLevels.copy;
 	}
 	else if (this.isDesign) {
-		this.permissionLevel = permission_levels.design;
+		this.permissionLevel = auth.permissionLevels.design;
 	}
 	else if (this.isStaff) {
-		this.permissionLevel = permission_levels.staff;
+		this.permissionLevel = auth.permissionLevels.staff;
 	}
 	else {
 		this.permissionLevel = 0;
@@ -121,31 +118,13 @@ User.schema.pre('save', function (next) {
  *
  * If either of those conditionals are true, grant access to the interface.
  *
+ * See keystone-47pages/routes/api/auth for more information.
+ *
  */
 
 // Virtual methods
 User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isStaff;
-});
-
-User.schema.virtual('canSeeAuthor').get(function () {
-	return this.isEditor || this.permissionLevel > permission_levels.editor;
-});
-
-User.schema.virtual('canSeeEmail').get(function () {
-	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
-});
-
-User.schema.virtual('canEditTextarea').get(function () {
-	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
-});
-
-User.schema.virtual('canEditMeeting').get(function () {
-	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
-});
-
-User.schema.virtual('canEditModels').get(function () {
-	return this.isSeniorDesign || this.isSeniorLiterature || this.isSeniorArt || this.permissionLevel > permission_levels.senior;
 });
 
 User.defaultColumns = 'name, email, isAdmin';

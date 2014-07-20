@@ -66,14 +66,14 @@ ArtSubmission.add({
 	},
 	willingToEdit: SubmissionSchema.willingToEdit,
 	willingToMeetInPerson: SubmissionSchema.willingToMeetInPerson,
-	author: SubmissionSchema.author,
-	contactEmail: SubmissionSchema.contactEmail,
 	technicalDetails: {
 		type: String,
 		noedit: true
 	},
 	additionalNotes: SubmissionSchema.additionalNotes,
-	publishOnline: SubmissionSchema.publishOnline
+	publishOnline: SubmissionSchema.publishOnline,
+	author: SubmissionSchema.author,
+	contactEmail: SubmissionSchema.contactEmail
 });
 
 ArtSubmission.defaultColumns = 'title, status, submissionDate';
