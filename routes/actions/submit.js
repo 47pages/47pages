@@ -4,11 +4,10 @@ var keystone = require('keystone'),
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res),
-		locals = res.locals;
+	var locals = res.locals;
 
 	// Create a new submission on POST
-	view.on('post', function (next) {
+	if (req.method === 'POST') {
 		var new_submission,
 			model_fields;
 
@@ -73,10 +72,8 @@ exports = module.exports = function (req, res) {
 				locals.submitted = true;
 				req.flash('success', {title: 'Thanks for your submission! We will review it and get in touch if necessary.'});
 			}
-			next();
+
+			res.redirect('/contribute');
 		});
-	});
-
-	view.render('contribute');
-
+	}
 };
