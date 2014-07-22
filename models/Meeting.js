@@ -21,7 +21,10 @@ var Meeting = new keystone.List('Meeting', {
 
 Meeting.add({
 	date: {
-		type: Types.Date
+		type: Types.Date,
+		initial: true,
+		required: true,
+		noedit: true
 	},
 	minutes: {
 		type: Types.Html,

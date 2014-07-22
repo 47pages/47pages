@@ -10,6 +10,7 @@
 		"public",
 		"routes",
 		"templates",
+		"keystone.js",
 		"node_modules/keystone/lib",
 		"node_modules/keystone/public",
 		"node_modules/keystone/routes",

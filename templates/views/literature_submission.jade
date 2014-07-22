@@ -1,0 +1,8 @@
+extends ../layouts/default
+
+block content
+	div#container
+		a.submission
+			h2.submission__title= literature_submission.title
+			h4.submission__author= literature_submission.author.full
+			h4.submission__teaser !{literature_submission.editedPiece}

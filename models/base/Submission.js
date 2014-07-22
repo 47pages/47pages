@@ -62,6 +62,13 @@ var SubmissionSchema = {
 			status: 'staff review'
 		}
 	},
+	volumeAssignment: {
+		type: Types.Relationship,
+		ref: 'Volume',
+		dependsOn: {
+			status: 'design'
+		}
+	},
 	publishOnline: {
 		type: Types.Boolean,
 		default: false

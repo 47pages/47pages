@@ -34,15 +34,13 @@ var routes = {
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
-	// Views
+	// Public views
 	app.get('/', routes.views.index);
+	app.get('/literature', routes.views.literature);
+	app.get('/literature/:slug', routes.views.literature_submission);
 	app.get('/contribute', routes.views.contribute);
 	app.get('/staff', routes.views.staff);
 
 	// Actions
 	app.post('/submit', routes.actions.submit);
-
-	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-	// app.get('/protected', middleware.requireUser, routes.views.protected);
-
 };

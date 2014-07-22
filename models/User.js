@@ -1,6 +1,6 @@
 var keystone = require('keystone'),
 	Types = keystone.Field.Types,
-	auth = require('../node_modules/keystone/routes/api/auth')
+	auth = require('../node_modules/keystone/routes/api/auth');
 
 /**
  * User Model

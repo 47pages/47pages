@@ -1,6 +1,5 @@
 var keystone = require('keystone'),
 	Types = keystone.Field.Types,
-	_ = require('underscore'),
 	SubmissionSchema = require('./base/Submission.js');
 
 /**
@@ -33,6 +32,7 @@ ArtSubmission.add({
 	title: SubmissionSchema.title,
 	status: SubmissionSchema.status,
 	staffMeetingAssignment: SubmissionSchema.staffMeetingAssignment,
+	volumeAssignment: SubmissionSchema.volumeAssignment,
 	submissionDate: SubmissionSchema.submissionDate,
 	originalTitle: SubmissionSchema.originalTitle,
 	originalImage: {

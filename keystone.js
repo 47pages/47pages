@@ -92,6 +92,7 @@ keystone.set('email tests', require('./routes/emails'));
 
 keystone.set('nav', {
 	'submissions': ['literature-submissions', 'art-submissions'],
+	'volumes': 'volumes',
 	'meetings': 'meetings',
 	'users': 'users'
 });

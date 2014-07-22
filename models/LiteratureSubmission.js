@@ -31,6 +31,7 @@ LiteratureSubmission.add({
 	title: SubmissionSchema.title,
 	status: SubmissionSchema.status,
 	staffMeetingAssignment: SubmissionSchema.staffMeetingAssignment,
+	volumeAssignment: SubmissionSchema.volumeAssignment,
 	submissionDate: SubmissionSchema.submissionDate,
 	originalTitle: SubmissionSchema.originalTitle,
 	originalPiece: {
@@ -49,7 +50,8 @@ LiteratureSubmission.add({
 	editedPiece: {
 		type: Types.Html,
 		wysiwyg: true,
-		height: 150
+		height: 150,
+		default: ''
 	},
 	willingToEdit: SubmissionSchema.willingToEdit,
 	willingToMeetInPerson: SubmissionSchema.willingToMeetInPerson,
@@ -61,6 +63,11 @@ LiteratureSubmission.add({
 	publishOnline: SubmissionSchema.publishOnline,
 	author: SubmissionSchema.author,
 	contactEmail: SubmissionSchema.contactEmail
+});
+
+// Virtual methods
+LiteratureSubmission.schema.virtual('teaser').get(function () {
+	return this.editedPiece === '' ? '' : this.editedPiece.replace(/<(?:.|\n)*?>/gm, '').substr(0, 140) + '&hellip;';
 });
 
 LiteratureSubmission.defaultColumns = 'title, status, submissionDate';

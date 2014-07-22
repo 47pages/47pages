@@ -8,7 +8,7 @@ html
 		title 47 Pages
 		link(rel="shortcut icon", href="/images/favicon.ico", type="image/x-icon")
 
-		//- site.less is compiled by Grunt to be served as minified CSS
+		//- site.less is compiled by Grunt and served as minified CSS
 		link(href="/styles/site.min.css", rel="stylesheet")
 
 		//- In-page styling for the KeystoneJS Content Editor
@@ -27,9 +27,6 @@ html
 
 		//- BODY
 		#body
-			//- The Intro block appears above flash messages (used for temporary information display)
-			block intro
-
 			//- Flash messages
 			+flash-messages(messages)
 
