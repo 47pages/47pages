@@ -1,5 +1,8 @@
 extends ../layouts/default
 
+block css
+	link(href="/styles/css/contribute.min.css", rel="stylesheet")
+
 block js
 	script(src='/js/contribute.js')
 
@@ -22,7 +25,7 @@ block content
 							h4 Your Name
 							h6
 								| Your name will never be revealed to the editing staff until your piece is published -
-								| all requests are cataloged anonymously by a computer.
+								| all requests are catalogued anonymously by a computer.
 
 						td
 							input(type='text', name='author')

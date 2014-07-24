@@ -27,13 +27,28 @@ module.exports = function(grunt) {
 			}
 		},
 
+		less: {
+			development: {
+				options: {
+					compress: true
+				},
+				files: {
+					"public/styles/css/contribute.min.css": "public/styles/pages/contribute.less",
+					"public/styles/css/index.min.css": "public/styles/pages/index.less",
+					"public/styles/css/literature.min.css": "public/styles/pages/literature.less",
+					"public/styles/css/staff.min.css": "public/styles/pages/staff.less"
+				}
+			}
+		},
+
 		jshint: {
 			options: {
 				reporter: require('jshint-stylish'),
 				force: true
 			},
-			all: [ 'routes/**/*.js',
-						 'models/**/*.js'
+			all: [
+				'routes/**/*.js',
+				'models/**/*.js'
 			],
 			server: [
 				'./keystone.js'
@@ -87,12 +102,18 @@ module.exports = function(grunt) {
 			livereload: {
 				files: [
 					'public/styles/**/*.css',
-					'public/styles/**/*.less',
 					'templates/**/*.jade',
 					'node_modules/keystone/templates/**/*.jade'
 				],
 				options: {
 					livereload: true
+				}
+			},
+			styles: {
+				files: ['public/styles/**/*.less'],
+				tasks: ['less:development'],
+				options: {
+					nospawn: true
 				}
 			}
 		}
@@ -113,9 +134,13 @@ module.exports = function(grunt) {
 		]);
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+
 	grunt.registerTask('server', function () {
 		grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
 		grunt.task.run(['serve:' + target]);
 	});
 
+	grunt.registerTask('default', ['watch']);
 };
