@@ -11,7 +11,9 @@ exports = module.exports = function (req, res) {
 	locals.literature_submissions = [];
 
 	// Pass the published literature submissions to the view
-	query = keystone.list('LiteratureSubmission').model.find().populate('volumeAssignment');
+	query = keystone.list('LiteratureSubmission').model
+			.find()
+			.populate('volumeAssignment');
 
 	view.on('init', function (next) {
 		query.exec(function (err, results) {

@@ -36,6 +36,7 @@ module.exports = function(grunt) {
 					"public/styles/css/contribute.min.css": "public/styles/pages/contribute.less",
 					"public/styles/css/index.min.css": "public/styles/pages/index.less",
 					"public/styles/css/literature.min.css": "public/styles/pages/literature.less",
+					"public/styles/css/literature_submission.min.css": "public/styles/pages/literature_submission.less",
 					"public/styles/css/staff.min.css": "public/styles/pages/staff.less"
 				}
 			}
@@ -57,17 +58,9 @@ module.exports = function(grunt) {
 
 		concurrent: {
 			dev: {
-				tasks: ['nodemon', 'node-inspector', 'watch'],
+				tasks: ['nodemon', 'watch'],
 				options: {
 					logConcurrentOutput: true
-				}
-			}
-		},
-
-		'node-inspector': {
-			custom: {
-				options: {
-					'web-host': 'localhost'
 				}
 			}
 		},
@@ -98,16 +91,6 @@ module.exports = function(grunt) {
 					'public/js/lib/**/*.{js,json}'
 				],
 				tasks: ['jshint:server', 'concurrent:dev']
-			},
-			livereload: {
-				files: [
-					'public/styles/**/*.css',
-					'templates/**/*.jade',
-					'node_modules/keystone/templates/**/*.jade'
-				],
-				options: {
-					livereload: true
-				}
 			},
 			styles: {
 				files: ['public/styles/**/*.less'],

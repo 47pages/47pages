@@ -1,8 +1,13 @@
 extends ../layouts/default
 
+block css
+	link(href="/styles/css/literature_submission.min.css", rel="stylesheet")
+
 block content
 	div#container
-		a.submission
+		div.submission
 			h2.submission__title= literature_submission.title
 			h4.submission__author= literature_submission.author.full
-			h4.submission__teaser !{literature_submission.editedPiece}
+				&nbsp;&mdash;&nbsp;
+			h4.submission__volume Volume #{literature_submission.volumeAssignment.number}
+			h5.submission__body !{literature_submission.editedPiece}

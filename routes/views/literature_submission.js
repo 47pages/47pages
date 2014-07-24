@@ -11,11 +11,14 @@ exports = module.exports = function (req, res) {
 	locals.literature_submission = null;
 
 	// Pass the published literature submission to the view
-	query = keystone.list('LiteratureSubmission').model.findOne().where('slug', req.params.slug);
+	query = keystone.list('LiteratureSubmission').model
+			.findOne()
+			.where('slug', req.params.slug)
+			.populate('volumeAssignment');
 
 	view.on('init', function (next) {
-		query.exec(function (err, results) {
-			locals.literature_submission = results._doc;
+		query.exec(function (err, result) {
+			locals.literature_submission = result;
 			next();
 		});
 	});
