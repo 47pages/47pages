@@ -1,10 +1,10 @@
 'use strict()';
 
-var config= {
+var config = {
 	port: 3000
 };
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	// Load grunt tasks automatically
 	require('load-grunt-tasks')(grunt);
@@ -33,6 +33,8 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
+					"public/styles/css/art.min.css": "public/styles/pages/art.less",
+					"public/styles/css/art_submission.min.css": "public/styles/pages/art_submission.less",
 					"public/styles/css/contribute.min.css": "public/styles/pages/contribute.less",
 					"public/styles/css/index.min.css": "public/styles/pages/index.less",
 					"public/styles/css/literature.min.css": "public/styles/pages/literature.less",
@@ -103,14 +105,14 @@ module.exports = function(grunt) {
 	});
 
 	// load jshint
-	grunt.registerTask('lint', function(target) {
+	grunt.registerTask('lint', function (target) {
 		grunt.task.run([
 			'jshint'
 		]);
 	});
 
 	// default option to connect server
-	grunt.registerTask('serve', function(target) {
+	grunt.registerTask('serve', function (target) {
 		grunt.task.run([
 			'jshint',
 			'concurrent:dev'

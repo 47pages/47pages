@@ -76,5 +76,10 @@ ArtSubmission.add({
 	contactEmail: SubmissionSchema.contactEmail
 });
 
+// Virtual methods
+ArtSubmission.schema.virtual('thumbnailSrc').get(function () {
+	return '/private/submissions/art/edited/' + this.editedImage.filename;
+});
+
 ArtSubmission.defaultColumns = 'title, status, submissionDate';
 ArtSubmission.register();

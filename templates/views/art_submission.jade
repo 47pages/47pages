@@ -1,0 +1,13 @@
+extends ../layouts/default
+
+block css
+	link(href="/styles/css/art_submission.min.css", rel="stylesheet")
+
+block content
+	div#container
+		div.submission
+			h2.submission__title= art_submission.title
+			h4.submission__author= art_submission.author.full
+				&nbsp;&mdash;&nbsp;
+			h4.submission__volume Volume #{art_submission.volumeAssignment.number}
+			img(src=art_submission.thumbnailSrc).submission__body

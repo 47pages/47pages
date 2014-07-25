@@ -1,0 +1,52 @@
+@import "../base.less";
+
+.submissions {
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.submission {
+	width: 46%;
+	min-width: 450px;
+	height: 500px;
+	float: left;
+	margin: 2%;
+	padding: 30px;
+
+	background-color: rgba(255, 255, 255, 0.9);
+
+	&:hover {
+		background-color: rgb(255, 255, 255);
+		cursor: pointer;
+	}
+}
+
+.submission__volume, .submission__details, .submission__thumbnail {
+	float: left;
+}
+
+.submission__volume {
+	background-color: black;
+	font-family: centaur;
+	font-size: 36px;
+	color: white;
+
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.submission__details {
+	height: 71px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.submission__thumbnail {
+	height: 370px;
+	width: 440px;
+	overflow: hidden;
+	margin-top: 10px;
+}

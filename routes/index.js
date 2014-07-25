@@ -38,6 +38,8 @@ exports = module.exports = function (app) {
 	app.get('/', routes.views.index);
 	app.get('/literature', routes.views.literature);
 	app.get('/literature/:slug', routes.views.literature_submission);
+	app.get('/art', routes.views.art);
+	app.get('/art/:slug', routes.views.art_submission);
 	app.get('/contribute', routes.views.contribute);
 	app.get('/staff', routes.views.staff);
 
