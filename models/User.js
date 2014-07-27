@@ -124,8 +124,8 @@ User.schema.pre('save', function (next) {
 
 // Virtual methods
 User.schema.virtual('canAccessKeystone').get(function () {
-	return this.isStaff;
+	return this.isStaff || this.permissionLevel > auth.permissionLevels.staff;
 });
 
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name, email, permissionLevel';
 User.register();
