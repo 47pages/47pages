@@ -15,7 +15,6 @@ var Meeting = new keystone.List('Meeting', {
 		from: 'date',
 		unique: true
 	},
-	nocreate: true,
 	nodelete: true
 });
 
@@ -23,8 +22,7 @@ Meeting.add({
 	date: {
 		type: Types.Date,
 		initial: true,
-		required: true,
-		noedit: true
+		required: true
 	},
 	minutes: {
 		type: Types.Html,

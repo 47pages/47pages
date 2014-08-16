@@ -15,8 +15,7 @@ var Volume = new keystone.List('Volume', {
 		from: 'title',
 		unique: true
 	},
-	nodelete: true,
-	noedit: true
+	nodelete: true
 });
 
 Volume.add({

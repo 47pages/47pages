@@ -102,6 +102,32 @@ User.schema.pre('save', function (next) {
     next();
 });
 
+// Do not allow modification of the admin account by anyone except the admin himself
+User.schema.pre('validate', function (next, done) {
+	if (this.email === 'admin@47pages.org' && !this._req_user.isAdmin) {
+		var error_message = 'The admin account cannot be modified.';
+		done(new Error(error_message));
+		next(new Error(error_message));
+	}
+	else {
+		done();
+		next();
+	}
+});
+
+// Do not allow deletion of the admin account
+User.schema.pre('remove', function (next, done) {
+	if (this.email === 'admin@47pages.org') {
+		var error_message = 'The admin account cannot be deleted.';
+		done(new Error(error_message));
+		next(new Error(error_message));
+	}
+	else {
+		done();
+		next();
+	}
+});
+
 /**
  * The permissionLevel can be configured independently of role assignments.
  * This allows granting of permissions without changing a user's role-specific duties.
