@@ -9,8 +9,9 @@ FSP.contribute = function () {
 	/**
 	 * @private
 	 */
-	var self = this,
-		format_form = {	// Format the form based on the submission type (art vs. literature)
+	var my = {
+		self: this,
+		format_form: { // Format the form based on the submission type (art vs. literature)
 			toggle_literature: function () {
 				$('.submission-form__form--art-specific').each(function (index, element) {
 					$(element).hide();
@@ -38,7 +39,7 @@ FSP.contribute = function () {
 				});
 			}
 		},
-		validate_form = function () {
+		validate_form: function () {
 			if ($('input[name=author]').val() === '') {
 				alert('You must enter your name. It will remain confidential until publication.');
 				return false;
@@ -67,7 +68,8 @@ FSP.contribute = function () {
 			else {
 				return true;
 			}
-		};
+		}
+	};
 
 	/**
 	 * @public
@@ -76,25 +78,25 @@ FSP.contribute = function () {
 	this.init = function () {
 		$('input[name="submissionType"]').change(function (event) {
 			if (event.currentTarget.value === 'literature') {
-				format_form.toggle_literature();
+				my.format_form.toggle_literature();
 			}
 			else if (event.currentTarget.value === 'art') {
-				format_form.toggle_art();
+				my.format_form.toggle_art();
 			}
 		});
 
 		$('input[name="willingToEdit"]').change(function (event) {
 			if (event.currentTarget.value === 'true') {
-				format_form.show_editing_options();
+				my.format_form.show_editing_options();
 			}
 			else if (event.currentTarget.value === 'false') {
-				format_form.hide_editing_options();
+				my.format_form.hide_editing_options();
 			}
 		});
 
 		$('#show_submission_guidelines').on('click', function (event) {
 			event.stopPropagation();
-			self.show_submission_guidelines();
+			my.self.show_submission_guidelines();
 		});
 	};
 
@@ -114,11 +116,11 @@ FSP.contribute = function () {
 			event.stopPropagation(); // Don't exit if the click is within the modal
 		});
 		$(window).on('click', function (event) {
-			self.hide_submission_guidelines(); // Anywhere else, exit
+			my.self.hide_submission_guidelines(); // Anywhere else, exit
 		});
 		$(document).keydown(function (event) {
 			if (event.which === 27) {
-				self.hide_submission_guidelines(); // Also exit on esc press
+				my.self.hide_submission_guidelines(); // Also exit on esc press
 			}
 		});
 	};
@@ -143,7 +145,7 @@ FSP.contribute = function () {
 	 * @description Submits the submission form after performing appropriate validation
 	 */
 	this.submit_submission = function () {
-		if (validate_form()) {
+		if (my.validate_form()) {
 			$('.submission-form__form').submit();
 		}
 	};
