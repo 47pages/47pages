@@ -33,6 +33,7 @@ module.exports = function (grunt) {
 					compress: true
 				},
 				files: {
+					"public/styles/css/archive.min.css": "public/styles/pages/archive.less",
 					"public/styles/css/art.min.css": "public/styles/pages/art.less",
 					"public/styles/css/art_submission.min.css": "public/styles/pages/art_submission.less",
 					"public/styles/css/contribute.min.css": "public/styles/pages/contribute.less",
