@@ -13,12 +13,12 @@ exports = module.exports = function (req, res) {
 	// Pass the published art submissions to the view
 	query = keystone.list('ArtSubmission').model
 			.find()
+			.where('publishOnline').equals(true)
 			.populate('volumeAssignment');
 
 	view.on('init', function (next) {
 		query.exec(function (err, results) {
 			locals.art_submissions = results;
-			console.log(results);
 			next();
 		});
 	});

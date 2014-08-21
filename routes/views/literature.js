@@ -13,6 +13,7 @@ exports = module.exports = function (req, res) {
 	// Pass the published literature submissions to the view
 	query = keystone.list('LiteratureSubmission').model
 			.find()
+			.where('publishOnline').equals(true)
 			.populate('volumeAssignment');
 
 	view.on('init', function (next) {

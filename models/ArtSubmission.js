@@ -1,6 +1,6 @@
 var keystone = require('keystone'),
 	Types = keystone.Field.Types,
-	SubmissionSchema = require('./base/Submission.js');
+	Submission = require('./base/Submission.js');
 
 /**
  * ArtSubmission < Submission
@@ -29,12 +29,12 @@ var image_mime_types = [
 ];
 
 ArtSubmission.add({
-	title: SubmissionSchema.title,
-	status: SubmissionSchema.status,
-	staffMeetingAssignment: SubmissionSchema.staffMeetingAssignment,
-	volumeAssignment: SubmissionSchema.volumeAssignment,
-	submissionDate: SubmissionSchema.submissionDate,
-	originalTitle: SubmissionSchema.originalTitle,
+	title: Submission.schema.title,
+	status: Submission.schema.status,
+	staffMeetingAssignment: Submission.schema.staffMeetingAssignment,
+	volumeAssignment: Submission.schema.volumeAssignment,
+	submissionDate: Submission.schema.submissionDate,
+	originalTitle: Submission.schema.originalTitle,
 	originalImage: {
 		type: Types.LocalFile,
 		dest: './private/submissions/art/original',
@@ -64,21 +64,35 @@ ArtSubmission.add({
 					'</a>';
 		}
 	},
-	willingToEdit: SubmissionSchema.willingToEdit,
-	willingToMeetInPerson: SubmissionSchema.willingToMeetInPerson,
+	willingToEdit: Submission.schema.willingToEdit,
+	willingToMeetInPerson: Submission.schema.willingToMeetInPerson,
 	technicalDetails: {
 		type: String,
 		noedit: true
 	},
-	additionalNotes: SubmissionSchema.additionalNotes,
-	publishOnline: SubmissionSchema.publishOnline,
-	author: SubmissionSchema.author,
-	contactEmail: SubmissionSchema.contactEmail
+	additionalNotes: Submission.schema.additionalNotes,
+	publishOnline: Submission.schema.publishOnline,
+	author: Submission.schema.author,
+	contactEmail: Submission.schema.contactEmail
 });
 
 // Virtual methods
 ArtSubmission.schema.virtual('thumbnailSrc').get(function () {
 	return '/private/submissions/art/edited/' + this.editedImage.filename;
+});
+
+ArtSubmission.schema.pre('save', Submission.hooks.pre_save);
+
+ArtSubmission.schema.pre('validate', function (next, done) {
+	if (this.publishOnline && this._doc.editedImage !== {}) { // Seems like a Keystone bug; should just be able to check !this.editedImage
+		var error_message = 'Please upload an edited image before publishing this submission online!';
+		done(new Error(error_message));
+		next(new Error(error_message));
+	}
+	else {
+		done();
+		next();
+	}
 });
 
 ArtSubmission.defaultColumns = 'title, status, submissionDate';
