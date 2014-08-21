@@ -48,7 +48,8 @@ exports = module.exports = function (req, res) {
 					'willingToMeetInPerson',
 					'additionalNotes',
 					'originalTitle',
-					'originalImage'
+					'originalImage',
+					'originalLink'
 				].join(', ');
 
 				break;
@@ -71,6 +72,15 @@ exports = module.exports = function (req, res) {
 			} else {
 				locals.submitted = true;
 				req.flash('success', {title: 'Thanks for your submission! We will review it and get in touch if necessary.'});
+
+				new keystone.Email('submission-notification').send({
+					to: model_fields.contactEmail,
+					from: {
+						name: '47 Pages',
+						email: 'noreply@47pages.org'
+					},
+					subject: 'Submission Received'
+				});
 			}
 
 			res.redirect('/contribute');

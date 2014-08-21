@@ -49,16 +49,24 @@ FSP.contribute = function () {
 				alert('You must enter your email address. It will remain confidential unless you opt-in to receiving edits.');
 				return false;
 			}
-			else if ($('input[name=submission').val() === '') {
-				alert('You must enter your submission.');
+			else if (
+				$($('input[name=submissionType]'))[0].checked && // Literature submission
+				$('input[name=submission').val() === ''
+			) {
+				alert('You must upload your submission.');
+				return false;
+			}
+			else if (
+				$($('input[name=submissionType]'))[1].checked && // Art submission
+				$('input[name=submission').val() === '' &&
+				$('input[name=originalLink').val() === ''
+			) {
+				// TODO: Link validation (doesn't happen with Mongoose)
+				alert('You must upload your submission or submit a link to it.');
 				return false;
 			}
 			else if ($('input[name=title').val() === '') {
 				alert('You must enter the title of your piece.');
-				return false;
-			}
-			else if ($('input[name=submission').val() === '') {
-				alert('You must enter your submission.');
 				return false;
 			}
 			else if ($($('input[name=submissionType]'))[1].checked && $('textarea[name=technicalDetails]').val() === '') {
@@ -73,7 +81,7 @@ FSP.contribute = function () {
 
 	/**
 	 * @public
-	 * @description Binds listeners to handle literature/art type selection and presentation of guidelines modal
+	 * @description Binds listeners to handle literature/art type selection
 	 */
 	this.init = function () {
 		$('input[name="submissionType"]').change(function (event) {
@@ -92,11 +100,6 @@ FSP.contribute = function () {
 			else if (event.currentTarget.value === 'false') {
 				my.format_form.hide_editing_options();
 			}
-		});
-
-		$('#show_submission_guidelines').on('click', function (event) {
-			event.stopPropagation();
-			my.self.show_submission_guidelines();
 		});
 	};
 
@@ -123,6 +126,7 @@ FSP.contribute = function () {
 				my.self.hide_submission_guidelines(); // Also exit on esc press
 			}
 		});
+		event.stopPropagation(); // Don't trigger the exit listener we just bound!
 	};
 
 	/**
@@ -153,6 +157,6 @@ FSP.contribute = function () {
 	return this;
 };
 
-FSP.Contribute = FSP.contribute();
+FSP.Contribute = new FSP.contribute();
 
 $('document').ready(FSP.Contribute.init);

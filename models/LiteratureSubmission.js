@@ -45,6 +45,7 @@ LiteratureSubmission.add({
 		format: function (model, file) {
 			return '<a href="/private/submissions/literature/original/' + file.filename + '">' + file.filename + '</a>';
 		},
+		required: true,
 		noedit: true
 	},
 	editedPiece: {

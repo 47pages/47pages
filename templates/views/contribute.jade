@@ -17,7 +17,7 @@ block content
 				| believe it deserves a spot in our publication!
 			p
 				| Prior to contributing one or more pieces for publication, please be sure that each complies with our
-				|  #[span(id='show_submission_guidelines', class='link') submission guidelines].
+				|  #[span(onclick='FSP.Contribute.show_submission_guidelines()', class='link') submission guidelines].
 			form(action='submit', method='POST', enctype='multipart/form-data').submission-form__form
 				table
 					tr
@@ -45,11 +45,20 @@ block content
 						td
 							h4 Submission
 							h6
-								| Do not include your name in the uploaded document itself! Files must be in a valid
-								| document or image format.
+								| Do not include your name in the uploaded document itself! Files must be in a
+								|  #[span(onclick='FSP.Contribute.show_submission_guidelines()', class='link') valid document or image format].
 
 						td
 							input(type='file', name='submission')
+					tr.submission-form__form--art-specific
+						td
+							h4 Link (Optional)
+							h6
+								| If you are submitting multiple pieces collectively, consider uploading them to a
+								| third-party site instead and submitting the public URL. You cannot upload a .zip
+								| collection.
+						td
+							input(type="text", name="originalLink")
 					tr
 						td
 							h4 Title
@@ -116,12 +125,12 @@ block content
 				ul
 					li
 						| <b>Prose and Poetry:</b> Upward word limit of 5,000 preferred, but not mandatory. Longer pieces
-						| will not be immediately discounted.
+						| will not be immediately discounted. Accepted file formats: .doc, .docx, .txt, .pages.
 					li
 						| <b>Photography, 2D Digital and Traditional Art, 3D Art</b>: Files must be no larger than 15MB. If
 						| your submission exceeds this limit, consider cropping it or uploading it to a third-party site
-						| like Google Drive or Dropbox and submitting the link instead. See a list of supported file types
-						|  #[a(href='http://helpx.adobe.com/illustrator/kb/supported-file-formats-illustrator.html') here].
+						| like Google Drive or Dropbox and submitting the public link instead. Accepted file formats: .png,
+						| .jpg, .jpeg, .tiff, .gif, .svg.
 					li
 						| <b>Comics:</b> Both digital and traditional comics and strips accepted. However, legibility is
 						| critical: if handwritten text is difficult to decipher, we will contact you requesting a

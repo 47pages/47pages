@@ -50,6 +50,10 @@ ArtSubmission.add({
 		},
 		noedit: true
 	},
+	originalLink: {
+		type: Types.Url,
+		noedit: true
+	},
 	editedImage: {
 		type: Types.LocalFile,
 		dest: './private/submissions/art/edited',
