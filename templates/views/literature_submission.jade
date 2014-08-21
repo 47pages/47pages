@@ -6,8 +6,13 @@ block css
 block content
 	div#container
 		div.submission
-			h2.submission__title= literature_submission.title
-			h4.submission__author= literature_submission.author.full
-				&nbsp;&mdash;&nbsp;
-			h4.submission__volume Volume #{literature_submission.volumeAssignment.number}
-			h5.submission__body !{literature_submission.editedPiece}
+			if literature_submission
+				h2.submission__title= literature_submission.title
+				h4.submission__author= literature_submission.author.full
+					&nbsp;&mdash;&nbsp;
+				h4.submission__volume Volume #{literature_submission.volumeAssignment.number}
+				h5.submission__body !{literature_submission.editedPiece}
+			else
+				h2 Sorry, you have followed an invalid URL.
+				br
+				h5 Perhaps this submission has been moved or deleted.

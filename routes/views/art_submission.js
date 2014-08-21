@@ -14,6 +14,7 @@ exports = module.exports = function (req, res) {
 	query = keystone.list('ArtSubmission').model
 			.findOne()
 			.where('slug', req.params.slug)
+			.where('publishOnline').equals(true)
 			.populate('volumeAssignment');
 
 	view.on('init', function (next) {
