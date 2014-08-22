@@ -43,6 +43,7 @@ exports = module.exports = function (app) {
 	app.get('/archive', routes.views.archive);
 	app.get('/contribute', routes.views.contribute);
 	app.get('/staff', routes.views.staff);
+	app.get('/contact', routes.views.contact);
 
 	// Actions
 	app.post('/submit', routes.actions.submit);

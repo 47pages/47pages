@@ -7,4 +7,4 @@ header
 	ul.header__navbar.float-right
 		li(class=(page == 'contribute' ? 'active' : null)): a(href='/contribute')= 'Contribute'
 		li(class=(page == 'staff' ? 'active' : null)): a(href='/staff')= 'Staff'
-		li: a(href='/keystone/signin')= 'Login'
+		li(class=(page == 'contact' ? 'active' : null)): a(href='/contact')= 'Contact'
