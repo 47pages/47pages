@@ -6,10 +6,15 @@ block css
 block content
 	div#container
 		div.submissions
-			each submission in art_submissions
-				a.submission(href='art/' + submission.slug)
-					span.submission__volume Volume #{submission.volumeAssignment.number}
-					div.submission__details
-						h3.submission__title= submission.title
-						h5.submission__author= submission.author.full
-					img(src=submission.thumbnailSrc).submission__thumbnail
+			if art_submissions.length
+				each submission in art_submissions
+					a.submission(href='art/' + submission.slug)
+						span.submission__volume Volume #{submission.volumeAssignment.number}
+						div.submission__details
+							h3.submission__title= submission.title
+							h5.submission__author= submission.author.full
+						img(src=submission.thumbnailSrc).submission__thumbnail
+			else
+				div.no-submission
+					h3 There are no submissions to display.
+					h4 Check back later!
