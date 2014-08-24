@@ -1,7 +1,7 @@
 @import "../base.less";
 
 .submissions {
-	width: 65%;
+	width: @CONTAINER_WIDTH;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -11,9 +11,9 @@
 	min-width: 925px;
 	float: left;
 	margin-top: 20px;
-	padding: 30px;
+	padding: @CONTAINER_PADDING;
 
-	background-color: @white09;
+	background-color: @COLOR_WHITE09;
 
 	&:hover {
 		background-color: rgb(255, 255, 255);
@@ -47,13 +47,4 @@
 	width: 700px;
 	padding-left: 30px;
 	float: left;
-}
-
-.no-submission {
-	width: 100%;
-	min-width: 925px;
-	float: left;
-	margin-top: 20px;
-	padding: 30px;
-	background-color: @white09;
 }

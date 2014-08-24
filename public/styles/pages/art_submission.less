@@ -1,27 +1,36 @@
 @import "../base.less";
 
 .submission {
-	width: 70%;
+	width: @CONTAINER_WIDTH;
 	margin-left: auto;
 	margin-right: auto;
 
-	padding: 40px;
+	.submission__header {
+		padding: 20px; // Exception to @CONTAINER_PADDING
+		background-color: @COLOR_WHITE09;
 
-	background-color: white;
-}
+		.submission__title {
+			margin-bottom: 10px;
+		}
 
-.submission__title {
-	margin-bottom: 10px;
-}
+		.submission__author {
+			float: left;
+		}
+	}
 
-.submission__author {
-	float: left;
-}
+	.submission__body {
+		margin-top: 10px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 20px; // Exception to @CONTAINER_PADDING
+		background-color: @COLOR_WHITE09;
 
-.submission__body {
-	max-width: 900px;
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+		.submission__image {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 900px;
+			border: 1px solid black;
+		}
+	}
 }

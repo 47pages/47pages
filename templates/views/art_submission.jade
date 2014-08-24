@@ -7,12 +7,14 @@ block content
 	div#container
 		div.submission
 			if art_submission
-				h2.submission__title= art_submission.title
-				h4.submission__author= art_submission.author.full
-					&nbsp;&mdash;&nbsp;
-				h4.submission__volume Volume #{art_submission.volumeAssignment.number}
-				img(src=art_submission.thumbnailSrc).submission__body
+				div.submission__header
+					h2.submission__title= art_submission.title
+					h4.submission__author= art_submission.author.full
+						&nbsp;&mdash;&nbsp;
+					h4.submission__volume Volume #{art_submission.volumeAssignment.number}
+				div.submission__body
+					img(src=art_submission.thumbnailSrc).submission__image
 			else
-				h2 Sorry, you have followed an invalid URL.
-				br
-				h5 Perhaps this submission has been moved or deleted.
+				div.no-submission
+					h3 Sorry, you have followed an invalid URL.
+					p Perhaps this submission has been moved or deleted.

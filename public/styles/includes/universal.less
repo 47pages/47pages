@@ -58,7 +58,7 @@ h6 {
 }
 
 a {
-	color: @link_color;
+	color: @COLOR_LINK;
 	text-decoration: none;
 }
 
@@ -132,10 +132,19 @@ ul {
 }
 
 .link {
-	color: @link_color;
+	color: @COLOR_LINK;
 
 	&:hover {
 		text-decoration: underline;
 		cursor: pointer;
 	}
+}
+
+.no-submission {
+	width: 100%;
+	min-width: 925px;
+	float: left;
+	margin-top: 20px;
+	padding: @CONTAINER_PADDING;
+	background-color: @COLOR_WHITE09;
 }

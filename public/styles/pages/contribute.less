@@ -1,12 +1,12 @@
 @import "../base.less";
 
 .submission-form {
-	width: 65%;
+	width: 65%; // Exception to @CONTAINER_WIDTH
 	margin-left: auto;
 	margin-right: auto;
-	padding: 30px;
+	padding: @CONTAINER_PADDING;
 
-	background-color: @white09;
+	background-color: @COLOR_WHITE09;
 
 	h2 {
 		margin: 0;
@@ -54,7 +54,7 @@
 	left: 10%;
 	position: fixed;
 	margin-top: 5%;
-	padding: 30px;
+	padding: @CONTAINER_PADDING;
 	z-index: 10;
 
 	background-color: white;
