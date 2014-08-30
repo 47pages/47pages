@@ -11,33 +11,12 @@ FSP.contribute = function () {
 	 */
 	var my = {
 		self: this,
-		format_form: { // Format the form based on the submission type (art vs. literature)
-			toggle_literature: function () {
-				$('.submission-form__form--art-specific').each(function (index, element) {
-					$(element).hide();
-				});
-				$('.submission-form__form--literature-specific').each(function (index, element) {
-					$(element).show();
-				});
-			},
-			toggle_art: function () {
-				$('.submission-form__form--art-specific').each(function (index, element) {
-					$(element).show();
-				});
-				$('.submission-form__form--literature-specific').each(function (index, element) {
-					$(element).hide();
-				});
-			},
-			show_editing_options: function () {
-				$('.submission-form__form--editing-options').each(function (index, element) {
-					$(element).show();
-				});
-			},
-			hide_editing_options: function () {
-				$('.submission-form__form--editing-options').each(function (index, element) {
-					$(element).hide();
-				});
-			}
+		toggle_submission_type: function () {
+			$('.submission-form__form--art-specific').toggleClass('invisible');
+			$('.submission-form__form--literature-specific').toggleClass('invisible');
+		},
+		toggle_editing_options: function () {
+			$('.submission-form__form--editing-options').toggleClass('invisible');
 		},
 		validate_form: function () {
 			if ($('input[name=author]').val() === '') {
@@ -81,25 +60,15 @@ FSP.contribute = function () {
 
 	/**
 	 * @public
-	 * @description Binds listeners to handle literature/art type selection
+	 * @description Binds listeners to handle submission type and editing options selections
 	 */
-	this.init = function () {
+	my.self.init = function () {
 		$('input[name="submissionType"]').change(function (event) {
-			if (event.currentTarget.value === 'literature') {
-				my.format_form.toggle_literature();
-			}
-			else if (event.currentTarget.value === 'art') {
-				my.format_form.toggle_art();
-			}
+			my.toggle_submission_type();
 		});
 
 		$('input[name="willingToEdit"]').change(function (event) {
-			if (event.currentTarget.value === 'true') {
-				my.format_form.show_editing_options();
-			}
-			else if (event.currentTarget.value === 'false') {
-				my.format_form.hide_editing_options();
-			}
+			my.toggle_editing_options();
 		});
 	};
 
@@ -107,7 +76,7 @@ FSP.contribute = function () {
 	 * @public
 	 * @description Shows the submission guidelines modal
 	 */
-	this.show_submission_guidelines = function () {
+	my.self.show_submission_guidelines = function () {
 		$('.submission-guidelines').show();
 		$('.fade-background').show();
 
@@ -133,7 +102,7 @@ FSP.contribute = function () {
 	 * @public
 	 * @description Hides the submission guidelines modal
 	 */
-	this.hide_submission_guidelines = function () {
+	my.self.hide_submission_guidelines = function () {
 		$('.submission-guidelines').hide();
 		$('.fade-background').hide();
 
@@ -148,13 +117,13 @@ FSP.contribute = function () {
 	 * @public
 	 * @description Submits the submission form after performing appropriate validation
 	 */
-	this.submit_submission = function () {
+	my.self.submit_submission = function () {
 		if (my.validate_form()) {
 			$('.submission-form__form').submit();
 		}
 	};
 
-	return this;
+	return my.self;
 };
 
 FSP.Contribute = new FSP.contribute();
