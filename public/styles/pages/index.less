@@ -1,52 +1,55 @@
 @import "../base.less";
 
-.card {
+.news-card {
 	width: @CONTAINER_WIDTH;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2%;
 	padding: 20px;
 	overflow: auto;
-
 	background-color: @COLOR_WHITE09;
+
+	.news-card__date {
+		background-color: black;
+		font-family: centaur;
+		font-size: 36px;
+		color: white;
+
+		padding: 10px;
+
+		float: left;
+	}
+
+	.news-card__title {
+		float: left;
+		padding-left: 20px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.news-card__body {
+		padding-top: 10px;
+		clear: both;
+	}
+}
+
+.welcome-header {
+	overflow: auto;
+
+	.welcome-header__text {
+		padding-left: 20px;
+
+		h2 {
+			font-size: 72px;
+			margin: 0;
+		}
+	}
+
+	.welcome-description {
+		clear: both;
+	}
 }
 
 .welcome-header__image, .welcome-header__text {
 	float: left;
-}
-
-.welcome-header__text {
-	padding-left: 20px;
-
-	h2 {
-		font-size: 72px;
-		margin: 0;
-	}
-}
-
-.welcome-description {
-	clear: both;
-}
-
-.card__date {
-	background-color: black;
-	font-family: centaur;
-	font-size: 36px;
-	color: white;
-
-	padding: 10px;
-
-	float: left;
-}
-
-.card__title {
-	float: left;
-	padding-left: 20px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.card__body {
-	padding-top: 10px;
-	clear: both;
 }

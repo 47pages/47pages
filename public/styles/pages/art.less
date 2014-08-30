@@ -8,46 +8,40 @@
 
 .submission {
 	width: 46%;
-	min-width: 450px;
+	min-width: 215px;
 	height: 500px;
 	float: left;
 	margin: 2%;
 	padding: @CONTAINER_PADDING;
-
 	background-color: @COLOR_WHITE09;
 
 	&:hover {
 		background-color: rgb(255, 255, 255);
 		cursor: pointer;
 	}
+
+	.submission__volume {
+		background-color: black;
+		font-family: centaur;
+		font-size: 36px;
+		color: white;
+		padding: 6px 10px;
+	}
+
+	.submission__details {
+		height: 71px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.submission__thumbnail {
+		width: 100%;
+		max-height: 370px;
+		margin-top: 10px;
+		border: 1px solid black;
+	}
 }
 
 .submission__volume, .submission__details, .submission__thumbnail {
 	float: left;
-}
-
-.submission__volume {
-	background-color: black;
-	font-family: centaur;
-	font-size: 36px;
-	color: white;
-
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 6px;
-	padding-bottom: 6px;
-}
-
-.submission__details {
-	height: 71px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-.submission__thumbnail {
-	height: 370px;
-	width: 420px;
-	overflow: hidden;
-	margin-top: 10px;
-	border: 1px solid black;
 }

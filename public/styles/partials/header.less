@@ -1,51 +1,48 @@
-@header_height: 85px;
+@HEADER_HEIGHT: 85px;
 
 header {
 	width: 100%;
-	height: @header_height;
-
+	height: @HEADER_HEIGHT;
+	min-width: 1015px;
 	background-color: black;
-}
 
-.header__logo {
-	font-family: centaur;
-	font-size: 54px;
-	color: white;
-
-	float: left;
-}
-
-.header__navbar {
-	list-style: none;
-	font-size: 18px;
-	font-weight: 200;
-	text-transform: uppercase;
-
-	float: left;
-	margin-left: 20px;
-	margin-right: 40px;
-	padding: 0;
-
-	li {
+	.header__logo {
+		font-family: centaur;
+		font-size: 54px;
+		color: white;
 		float: left;
-		margin: 0;
+	}
 
-		&:hover {
-			background-color: grey;
-		}
+	.header__navbar {
+		list-style: none;
+		font-size: 18px;
+		font-weight: 200;
+		text-transform: uppercase;
+		float: left;
+		margin-left: 20px;
+		margin-right: 40px;
+		padding: 0;
 
-		a {
-			width: 100%;
-			height: 100%;
-			line-height: @header_height;
-			padding: 15px;
+		li {
+			float: left;
+			margin: 0;
 
-			color: white;
-			text-decoration: none;
-		}
+			&:hover {
+				background-color: grey;
+			}
 
-		&.active {
-			font-weight: bold;
+			a {
+				width: 100%;
+				height: 100%;
+				line-height: @HEADER_HEIGHT;
+				padding: 15px;
+				color: white;
+				text-decoration: none;
+			}
+
+			&.active {
+				font-weight: bold;
+			}
 		}
 	}
 }
