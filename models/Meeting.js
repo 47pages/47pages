@@ -43,5 +43,5 @@ Meeting.relationship({
 	refPath: 'staffMeetingAssignment'
 });
 
-Meeting.defaultColumns = 'date';
+Meeting.defaultColumns = 'date, minutes';
 Meeting.register();
