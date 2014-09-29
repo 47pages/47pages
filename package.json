@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.4",
+    "grunt-cli": "~0.1.13",
     "grunt-express-server": "~0.4.17",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-jshint": "~0.7.1",
@@ -27,7 +28,8 @@
     "npm": ">=1.3.14"
   },
   "scripts": {
-    "start": "node keystone.js"
+    "start": "node keystone.js",
+    "postinstall": "./node_modules/grunt-cli/bin/grunt less"
   },
   "main": "keystone.js"
 }
