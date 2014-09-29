@@ -104,7 +104,7 @@ User.schema.pre('save', function (next) {
 
 // Do not allow modification of the admin account by anyone except the admin himself
 User.schema.pre('validate', function (next, done) {
-	if (this.email === 'admin@47pages.org' && !this._req_user.isAdmin) {
+	if (this._req_user && this.email === 'admin@47pages.org' && !this._req_user.isAdmin) {
 		var error_message = 'The admin account cannot be modified.';
 		done(new Error(error_message));
 		next(new Error(error_message));
