@@ -1,4 +1,4 @@
-var keystone = require('keystone'),
+var keystone = require('47pages-keystone'),
 	LiteratureSubmission = keystone.list('LiteratureSubmission'),
 	ArtSubmission = keystone.list('ArtSubmission');
 

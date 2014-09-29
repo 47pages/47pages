@@ -1,4 +1,4 @@
-auth = require('../node_modules/keystone/routes/api/auth');
+auth = require('../node_modules/47pages-keystone/routes/api/auth');
 
 exports.create = {
 	User: [

@@ -1,4 +1,4 @@
-var keystone = require('keystone'),
+var keystone = require('47pages-keystone'),
 	Types = keystone.Field.Types;
 
 /**

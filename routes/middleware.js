@@ -10,7 +10,7 @@
 
 var _ = require('underscore'),
 	querystring = require('querystring'),
-	keystone = require('keystone');
+	keystone = require('47pages-keystone');
 
 
 /**

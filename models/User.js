@@ -1,6 +1,6 @@
-var keystone = require('keystone'),
+var keystone = require('47pages-keystone'),
 	Types = keystone.Field.Types,
-	auth = require('../node_modules/keystone/routes/api/auth');
+	auth = require('../node_modules/47pages-keystone/routes/api/auth');
 
 /**
  * User Model

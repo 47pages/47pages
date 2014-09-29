@@ -18,7 +18,7 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var keystone = require('keystone'),
+var keystone = require('47pages-keystone'),
 	middleware = require('./middleware'),
 	importRoutes = keystone.importer(__dirname);
 

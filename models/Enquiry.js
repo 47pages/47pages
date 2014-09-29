@@ -1,4 +1,4 @@
-var keystone = require('keystone'),
+var keystone = require('47pages-keystone'),
 	Types = keystone.Field.Types;
 
 /**
@@ -36,13 +36,13 @@ Enquiry.schema.post('save', function() {
 });
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
-	
+
 	var enqiury = this;
-	
+
 	keystone.list('User').model.find().where('isAdmin', true).exec(function(err, admins) {
-		
+
 		if (err) return callback(err);
-		
+
 		new keystone.Email('enquiry-notification').send({
 			to: admins,
 			from: {
@@ -52,9 +52,9 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 			subject: 'New Enquiry for 47 Pages',
 			enquiry: enqiury
 		}, callback);
-		
+
 	});
-	
+
 }
 
 Enquiry.defaultSort = '-createdAt';

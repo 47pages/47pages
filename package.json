@@ -1,6 +1,6 @@
 {
-  "name": "47-pages",
-  "version": "0.0.0",
+  "name": "47pages",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "47pages-keystone": "~0.0.2",
