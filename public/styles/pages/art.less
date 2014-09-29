@@ -11,9 +11,17 @@
 	min-width: 215px;
 	height: 500px;
 	float: left;
-	margin: 2%;
 	padding: @CONTAINER_PADDING;
 	background-color: @COLOR_WHITE09;
+	box-shadow: @CONTAINER_SHADOW;
+
+	&:nth-child(odd) {
+		margin-right: 2%;
+	}
+
+	&:nth-child(even) {
+		margin-left: 2%;
+	}
 
 	&:hover {
 		background-color: rgb(255, 255, 255);

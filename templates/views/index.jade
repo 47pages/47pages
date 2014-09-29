@@ -4,35 +4,30 @@ block css
 	link(href="/styles/css/index.min.css", rel="stylesheet")
 
 block content
-	div.container
-		div.news-card
-			div.welcome-header
-				div.welcome-header__image
-					img(src='images/logo_square.png')
-				div.welcome-header__text
-					h1 Welcome
-					p.bold <i>47 Pages</i> is the literary magazine of the Claremont Colleges.
-			div.welcome-description
+	div#container
+		div.welcome-card
+			div.welcome-card__header
+					h1 Welcome to 47 Pages.
+					p The literary magazine of the Claremont Colleges.
+			div.welcome-card__description
 				p
-					| We publish everything from photography to micro-fiction; poetry to intricate doodles;
-					| personal narratives to wood carvings; cartoons to longer fiction pieces.
-				p
-					| Our mission is simple: we want to showcase the creativity that exists across all five campuses.
-					| We’re looking to compile selections of your best art and writing in a bi-monthly magazine, to be
-					| published and distributed across the campuses and made available online.
-		div.news-card
-			span.news-card__date June 06
-			h2.news-card__title Contribute
-			div.news-card__body
-				p
-					| If you are interested in contributing to the magazine, please consider
-					|  #[a(href='contribute') submitting your original work] or
-					|  #[a(href='staff') joining our staff]. Our editorial meetings are open to any interested students
-					|  and are a great way to start getting involved. If you want to see the type of pieces we’re interested
-					| in or what the staff responsibilities look like in action, you can keep up with editorial meeting dates by
-					|  #[a(href='https://www.facebook.com/47Pages') following us on Facebook].
-				p
-					| If you have any questions or want to know more about any aspect of the magazine, feel free to
-					| email our Editor-in-Chief at
-					|  #[a(href='mailto:editor@47pages.org') editor@47pages.org]. We can’t wait to share your talent
-					|  with the 5C community!
+					| We publish everything from photography to micro-fiction; poetry to intricate doodles; personal narratives
+					br
+					| to wood carvings; cartoons to longer fiction pieces.
+		div.news-container
+			div.news-card
+				h2.news-card__title Mission
+				div.news-card__body
+					p
+						| Our mission is simple: we want to showcase the creativity that exists across all five campuses.
+						| We’re looking to compile selections of your best art and writing in a bi-monthly magazine, to be
+						| published and distributed across the campuses and made available online.
+			div.news-card
+				h2.news-card__title Contribute
+				div.news-card__body
+					p
+						| If you are interested in contributing to the magazine, please consider
+						|  #[a(href='contribute') submitting your original work] or
+						|  #[a(href='staff') joining our staff]. Our editorial meetings are open to any interested students
+						|  and are a great way to start getting involved. Keep up with editorial meeting dates by
+						|  #[a(href='https://www.facebook.com/47Pages') following us on Facebook]!
