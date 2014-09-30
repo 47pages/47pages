@@ -17,9 +17,6 @@ node_modules
 
 .env
 
-# Compiled LESS
-*.min.css
-
 # Submission uploads
 private/submissions
 
