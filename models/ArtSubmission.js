@@ -37,7 +37,7 @@ ArtSubmission.add({
 	originalTitle: Submission.schema.originalTitle,
 	originalImage: {
 		type: Types.LocalFile,
-		dest: './private/submissions/art/original',
+		dest: keystone.get('root_dirname') + '/private/submissions/art/original',
 		allowedTypes: image_mime_types,
 		filename: function (model, filename) {
 			var filename_elements = filename.split('.');

@@ -14,6 +14,7 @@ keystone.init({
 	'brand': '47 Pages',
 	'signin logo': ['../images/logo_square.png', 150, 150],
 	'__dirname': '/code/47pages', // Can be different than the native __dirname with custom Keystone repo
+	'root_dirname': __dirname,
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',

@@ -36,7 +36,7 @@ LiteratureSubmission.add({
 	originalTitle: Submission.schema.originalTitle,
 	originalPiece: {
 		type: Types.LocalFile,
-		dest: './private/submissions/literature/original',
+		dest: keystone.get('root_dirname') + '/private/submissions/literature/original',
 		allowedTypes: doc_mime_types,
 		filename: function (model, filename) {
 			var filename_elements = filename.split('.');
