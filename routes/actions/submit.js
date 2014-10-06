@@ -77,7 +77,7 @@ exports = module.exports = function (req, res) {
 
 				// Let the user know that his submission was received
 				new keystone.Email('submission-receipt-notification').send({
-					to: req.body.contactEmail,
+					to: process.env.ENVIRONMENT == 'dev' ? 'admin@47pages.org' : req.body.contactEmail,
 					from: {
 						name: '47 Pages',
 						email: 'noreply@47pages.org'
@@ -95,15 +95,21 @@ exports = module.exports = function (req, res) {
 
 				switch (req.body.submissionType) {
 				case 'literature':
-					staff_emails = [
-						{email: 'admin@47pages.org'}
-					];
+					staff_emails = [{email: 'admin@47pages.org'}];
+					if (process.env.ENVIRONMENT !== 'dev') {
+						staff_emails.push({email: 'literature@47pages.org'});
+						staff_emails.push({email: 'editor@47pages.org'});
+					}
+
 					upload_path = keystone.get('root_dirname') + '/private/submissions/literature/original';
 					break;
 				case 'art':
-					staff_emails = [
-						{email: 'admin@47pages.org'}
-					];
+					staff_emails = [{email: 'admin@47pages.org'}];
+					if (process.env.ENVIRONMENT !== 'dev') {
+						staff_emails.push({email: 'art@47pages.org'});
+						staff_emails.push({email: 'editor@47pages.org'});
+					}
+
 					upload_path = keystone.get('root_dirname') + '/private/submissions/art/original';
 					break;
 				default:
