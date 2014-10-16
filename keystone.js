@@ -13,7 +13,6 @@ keystone.init({
 	'name': '47 Pages',
 	'brand': '47 Pages',
 	'signin logo': ['../images/logo_square.png', 150, 150],
-	'__dirname': '/code/47pages', // Can be different than the native __dirname with custom Keystone repo
 	'root_dirname': __dirname,
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
@@ -24,7 +23,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': 'T9WF>>gz:wTcV)%rgmPt).804W]?J*bb9Ps;7^}8,eo/T*r6l^moZd"nq4~3nt!~'
+	'cookie secret': process.env.COOKIE_SECRET
 });
 
 // Load your project's Models
