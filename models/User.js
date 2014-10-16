@@ -10,16 +10,23 @@ var keystone = require('47pages-keystone'),
 var User = new keystone.List('User');
 
 User.add({
+	username: {
+		type: Types.Text,
+		required: true,
+		initial: true,
+		index: true,
+		noedit: true // TEMP
+	},
 	name: {
 		type: Types.Name,
 		required: true,
+		initial: true,
 		index: true
 	},
 	email: {
 		type: Types.Email,
 		initial: true,
 		required: true,
-		index: true
 	},
 	password: {
 		type: Types.Password,
@@ -68,7 +75,8 @@ User.add({
 		label: 'Staff'
 	},
 	permissionLevel: {
-		type: Types.Number
+		type: Types.Number,
+		noedit: true
 	}
 });
 
