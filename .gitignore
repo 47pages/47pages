@@ -18,9 +18,9 @@ node_modules
 .env
 
 # Submission uploads
-private/submissions
+#private/submissions
 
 # Preserve directory layout
-!private/submissions/art/original/.blank
-!private/submissions/art/edited/.blank
-!private/submissions/literature/edited/.blank
+#!private/submissions/art/original/.blank
+#!private/submissions/art/edited/.blank
+#!private/submissions/literature/edited/.blank
