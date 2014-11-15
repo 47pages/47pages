@@ -19,36 +19,36 @@ FSP.contribute = function () {
 			$('.submission-form__form--editing-options').toggleClass('invisible');
 		},
 		validate_form: function () {
-			if ($('input[name=author]').val() === '') {
+			if ($('input[name="author"]').val() === '') {
 				alert('You must enter your name. It will remain confidential until publication.');
 				return false;
 			}
-			else if ($('input[name=contactEmail').val() === '') {
+			else if ($('input[name="contactEmail"]').val() === '') {
 				// Thorough regex validation happens at the Mongoose level
 				alert('You must enter your email address. It will remain confidential unless you opt-in to receiving edits.');
 				return false;
 			}
 			else if (
-				$($('input[name=submissionType]'))[0].checked && // Literature submission
-				$('input[name=submission').val() === ''
+				$($('input[name="submissionType"]'))[0].checked && // Literature submission
+				$('input[name="submission"]').val() === ''
 			) {
 				alert('You must upload your submission.');
 				return false;
 			}
 			else if (
-				$($('input[name=submissionType]'))[1].checked && // Art submission
-				$('input[name=submission').val() === '' &&
-				$('input[name=originalLink').val() === ''
+				$($('input[name="submissionType"]'))[1].checked && // Art submission
+				$('input[name="submission"]').val() === '' &&
+				$('input[name="originalLink"]').val() === ''
 			) {
 				// TODO: Link validation (doesn't happen with Mongoose)
 				alert('You must upload your submission or submit a link to it.');
 				return false;
 			}
-			else if ($('input[name=title').val() === '') {
+			else if ($('input[name="title"]').val() === '') {
 				alert('You must enter the title of your piece.');
 				return false;
 			}
-			else if ($($('input[name=submissionType]'))[1].checked && $('textarea[name=technicalDetails]').val() === '') {
+			else if ($($('input[name="submissionType"]'))[1].checked && $('textarea[name="technicalDetails"]').val() === '') {
 				alert('You must enter your art piece\'s technical details.');
 				return false;
 			}
