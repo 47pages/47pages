@@ -118,18 +118,19 @@ exports = module.exports = function (req, res) {
 					break;
 				}
 
-				var file_path = upload_path + '/' + filename_elements[0] + '_' + self.item.id + '.' + filename_elements[1],
-					admin_emails = ['admin@47pages.org'];
+				var admin_emails = ['admin@47pages.org'];
 
 				if (process.env.ENVIRONMENT !== 'dev') {
 					admin_emails.push({email: 'editor@47pages.org'});
 				}
 
-				// Send a copy of the submission to the senior editors
 				// Have to do this asynchronously since the file must be read in from its new saved location
 				fs.readFile(
-					file_path,
+					upload_path + '/' + filename_elements[0] + '_' + self.item.id + '.' + filename_elements[1],
 					function (err, data) {
+						var base64_submission = new Buffer(data).toString('base64');
+
+						// Send a copy of the submission to the senior editors
 						new keystone.Email('new-submission-notification').send({
 							to: staff_emails,
 							from: {
@@ -140,7 +141,7 @@ exports = module.exports = function (req, res) {
 							attachments: [{
 								type: req.files.submission.type,
 								name: req.files.submission.name,
-								content: new Buffer(data).toString('base64')
+								content: base64_submission
 							}],
 							submission_data: {
 								title: req.body.title,
@@ -150,14 +151,8 @@ exports = module.exports = function (req, res) {
 								artworkPairing: req.body.artworkPairing
 							}
 						});
-					}
-				);
 
-				// Send a copy of the submission with the author details to the admin and the editor-in-chief
-				// Have to do this asynchronously since the file must be read in from its new saved location
-				fs.readFile(
-					file_path,
-					function (err, data) {
+						// Send a copy of the submission with the author details to the admin and the editor-in-chief
 						new keystone.Email('admin-new-submission-notification').send({
 							to: admin_emails,
 							from: {
@@ -168,7 +163,7 @@ exports = module.exports = function (req, res) {
 							attachments: [{
 								type: req.files.submission.type,
 								name: req.files.submission.name,
-								content: new Buffer(data).toString('base64')
+								content: base64_submission
 							}],
 							submission_data: {
 								title: req.body.title,
@@ -182,7 +177,6 @@ exports = module.exports = function (req, res) {
 						});
 					}
 				);
-
 			}
 
 			res.redirect('/contribute');
