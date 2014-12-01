@@ -89,25 +89,27 @@ exports = module.exports = function (req, res) {
 					}
 				});
 
-				var staff_emails = '',
+				var staff_emails = [],
 					upload_path = '',
 					filename_elements = req.files.submission.name.split('.');
 
 				switch (req.body.submissionType) {
 				case 'literature':
-					staff_emails = [{email: 'admin@47pages.org'}];
 					if (process.env.ENVIRONMENT !== 'dev') {
-						staff_emails.push({email: 'literature@47pages.org'});
-						staff_emails.push({email: 'editor@47pages.org'});
+						staff_emails = [{email: 'literature@47pages.org'}];
+					}
+					else { // Testing purposes only
+						staff_emails = [{email: 'admin@47pages.org'}];
 					}
 
 					upload_path = keystone.get('root_dirname') + '/private/submissions/literature/original';
 					break;
 				case 'art':
-					staff_emails = [{email: 'admin@47pages.org'}];
 					if (process.env.ENVIRONMENT !== 'dev') {
-						staff_emails.push({email: 'art@47pages.org'});
-						staff_emails.push({email: 'editor@47pages.org'});
+						staff_emails = [{email: 'art@47pages.org'}];
+					}
+					else { // Testing purposes only
+						staff_emails = [{email: 'admin@47pages.org'}];
 					}
 
 					upload_path = keystone.get('root_dirname') + '/private/submissions/art/original';
@@ -116,38 +118,66 @@ exports = module.exports = function (req, res) {
 					break;
 				}
 
-				// Let the senior editors know that there is a new submission
-				new keystone.Email('new-submission-notification').send({
-					to: staff_emails,
-					from: {
-						name: '47 Pages',
-						email: 'noreply@47pages.org'
-					},
-					subject: 'New Submission Received',
-					submission_data: {
-						title: req.body.title
-					}
-				});
+				var file_path = upload_path + '/' + filename_elements[0] + '_' + self.item.id + '.' + filename_elements[1],
+					admin_emails = ['admin@47pages.org'];
 
-				// Send a copy of the submission to the admin just in case
+				if (process.env.ENVIRONMENT !== 'dev') {
+					admin_emails.push({email: 'editor@47pages.org'});
+				}
+
+				// Send a copy of the submission to the senior editors
 				// Have to do this asynchronously since the file must be read in from its new saved location
 				fs.readFile(
-					upload_path + '/' + filename_elements[0] + '_' + self.item.id + '.' + filename_elements[1],
+					file_path,
 					function (err, data) {
-						new keystone.Email('admin-new-submission-notification').send({
-							to: 'admin@47pages.org',
+						new keystone.Email('new-submission-notification').send({
+							to: staff_emails,
 							from: {
 								name: '47 Pages',
 								email: 'noreply@47pages.org'
 							},
-							subject: 'New Submission Received',
+							subject: 'New Submission Received: ' + req.body.title,
 							attachments: [{
 								type: req.files.submission.type,
 								name: req.files.submission.name,
 								content: new Buffer(data).toString('base64')
 							}],
 							submission_data: {
-								title: req.body.title
+								title: req.body.title,
+								willingToMeetInPerson: req.body.willingToMeetInPerson,
+								willingToEdit: req.body.willingToEdit,
+								additionalNotes: req.body.additionalNotes,
+								artworkPairing: req.body.artworkPairing
+							}
+						});
+					}
+				);
+
+				// Send a copy of the submission with the author details to the admin and the editor-in-chief
+				// Have to do this asynchronously since the file must be read in from its new saved location
+				fs.readFile(
+					file_path,
+					function (err, data) {
+						new keystone.Email('admin-new-submission-notification').send({
+							to: admin_emails,
+							from: {
+								name: '47 Pages',
+								email: 'noreply@47pages.org'
+							},
+							subject: 'New Submission Received: ' + req.body.title,
+							attachments: [{
+								type: req.files.submission.type,
+								name: req.files.submission.name,
+								content: new Buffer(data).toString('base64')
+							}],
+							submission_data: {
+								title: req.body.title,
+								author: req.body.author,
+								contactEmail: req.body.contactEmail,
+								willingToMeetInPerson: req.body.willingToMeetInPerson,
+								willingToEdit: req.body.willingToEdit,
+								additionalNotes: req.body.additionalNotes,
+								artworkPairing: req.body.artworkPairing
 							}
 						});
 					}

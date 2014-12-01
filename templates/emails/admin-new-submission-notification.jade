@@ -1,4 +1,17 @@
-p Hello Admin,
-p A new submission has arrived, titled "#{submission_data.title}". A backup copy is attached.
+p Hello Editor,
+p A new submission has arrived, titled "#{submission_data.title}".
+p Sensitive author information for your reference:
+p
+	| Name: "#{submission_data.author}"
+	br
+	| Email: "#{submission_data.contactEmail}"
+	br
+	| Willing to Edit: "#{submission_data.willingToEdit}"
+	br
+	| Willing to Meet in Person: "#{submission_data.willingToMeetInPerson}"
+	br
+	| Additional Notes: "#{submission_data.additionalNotes}"
+	br
+	| Artwork Pairing: "#{submission_data.artworkPairing}"
 p Best,
 p Your Friendly Anonymous Robot

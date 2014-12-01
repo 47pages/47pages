@@ -1,6 +1,13 @@
 p Hello,
+p A new submission has arrived, titled "#{submission_data.title}"!
+p The author's submission preferences for your reference:
 p
-	| A new submission has arrived, titled "#{submission_data.title}"!
-	| You can view this piece by logging into <a href="http://47pages.org/keystone">Keystone</a>.
+	| Willing to Edit: "#{submission_data.willingToEdit}"
+	br
+	| Willing to Meet in Person: "#{submission_data.willingToMeetInPerson}"
+	br
+	| Additional Notes: "#{submission_data.additionalNotes}"
+	br
+	| Artwork Pairing: "#{submission_data.artworkPairing}"
 p Best,
 p Your Friendly Anonymous Robot
